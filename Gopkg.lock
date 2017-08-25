@@ -2,6 +2,12 @@
 
 
 [[projects]]
+  name = "github.com/BurntSushi/toml"
+  packages = ["."]
+  revision = "b26d9c308763d68093482582cea63d69be07a0f0"
+  version = "v0.3.0"
+
+[[projects]]
   branch = "master"
   name = "github.com/ChimeraCoder/anaconda"
   packages = ["."]
@@ -18,6 +24,12 @@
   name = "github.com/azr/backoff"
   packages = ["."]
   revision = "53511d3c733003985b0b76f733df1f4d0095ee6a"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/crgimenes/goconfig"
+  packages = [".","goenv","goflags","structtag","toml"]
+  revision = "95c702640de75e6c04975f8119e8ae45c21635ce"
 
 [[projects]]
   branch = "master"
@@ -47,7 +59,13 @@
   branch = "master"
   name = "github.com/hashicorp/hcl"
   packages = [".","hcl/ast","hcl/parser","hcl/scanner","hcl/strconv","hcl/token","json/parser","json/scanner","json/token"]
-  revision = "392dba7d905ed5d04a5794ba89f558b27e2ba1ca"
+  revision = "8f6b1344a92ff8877cf24a5de9177bf7d0a2a187"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/imunizeme/config.core"
+  packages = ["."]
+  revision = "8aa855d8d1148986b25325318be9626d8a998aae"
 
 [[projects]]
   branch = "master"
@@ -167,7 +185,7 @@
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix","windows"]
-  revision = "07c182904dbd53199946ba614a412c61d3c548f5"
+  revision = "22e23b74325bf60e4cc1ce7bdc157eda0d8b5c13"
 
 [[projects]]
   branch = "master"
@@ -184,6 +202,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "fb5de6d68be42754af4b9e456e06b2195bf0f90fa0d662eb210e86ae1589f49c"
+  inputs-digest = "32245782ae247dabcd3c51bda06f70fd6db63fcb7ac40a3e2d5ccd5f45d210f0"
   solver-name = "gps-cdcl"
   solver-version = 1

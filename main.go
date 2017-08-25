@@ -2,9 +2,9 @@ package main
 
 import (
 	"net/url"
-	"os"
 
 	"github.com/ChimeraCoder/anaconda"
+	"github.com/imunizeme/config.core"
 	"github.com/sirupsen/logrus"
 )
 
@@ -12,27 +12,15 @@ const (
 	minSaudeTwitterID = "37717107"
 )
 
-var (
-	consumerKey       = getenv("TWITTER_CONSUMER_KEY")
-	consumerSecret    = getenv("TWITTER_CONSUMER_SECRET")
-	accessToken       = getenv("TWITTER_ACCESS_TOKEN")
-	accessTokenSecret = getenv("TWITTER_ACCESS_TOKEN_SECRET")
-)
-
-func getenv(name string) string {
-	v := os.Getenv(name)
-	if v == "" {
-		panic("missing required environment variable " + name)
-	}
-	return v
-}
-
 func main() {
-	anaconda.SetConsumerKey(consumerKey)
-	anaconda.SetConsumerSecret(consumerSecret)
-	api := anaconda.NewTwitterApi(accessToken, accessTokenSecret)
-
 	log := &logger{logrus.New()}
+	if err := config.Load(); err != nil {
+		log.Fatal(err)
+	}
+	anaconda.SetConsumerKey(config.Get.Bot.Consumerkey)
+	anaconda.SetConsumerSecret(config.Get.Bot.ConsumerSecret)
+	api := anaconda.NewTwitterApi(config.Get.Bot.AccessToken, config.Get.Bot.TokenSecret)
+
 	api.SetLogger(log)
 
 	stream := api.PublicStreamFilter(url.Values{

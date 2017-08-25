@@ -1,12 +1,9 @@
 package main
 
 import (
+	"github.com/imunizeme/config.core"
 	"github.com/prest/adapters/postgres"
 	gcm "github.com/wuman/go-gcm"
-)
-
-var (
-	gcmApiKey = getenv("GCM_API_KEY")
 )
 
 func send(text string) error {
@@ -17,7 +14,7 @@ func send(text string) error {
 		Icon:        "ic_imunizeme_launcher",
 		ClickAction: "WebViewActivity",
 	}
-	sender := gcm.NewSender(gcmApiKey)
+	sender := gcm.NewSender(config.Get.Bot.MessageToken)
 	err := postgres.Query("SELECT * FROM notification_clients").Scan(&ids)
 	if err != nil {
 		return err

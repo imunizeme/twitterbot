@@ -27,6 +27,10 @@
 
 [[constraint]]
   branch = "master"
+  name = "github.com/imunizeme/config.core"
+
+[[constraint]]
+  branch = "master"
   name = "github.com/prest/adapters"
 
 [[constraint]]
