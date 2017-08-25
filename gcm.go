@@ -11,14 +11,17 @@ var (
 
 func send(text string) error {
 	ids := make([]string, 0)
-	data := map[string]string{
-		"text": text,
+	n := &gcm.Notification{
+		Title:       "Notícia",
+		Body:        text,
+		Icon:        "ic_imunizeme_launcher",
+		ClickAction: "WebViewActivity",
 	}
 	sender := gcm.NewSender(gcmApiKey)
 	err := postgres.Query("SELECT * FROM notification_clients").Scan(&ids)
 	if err != nil {
 		return err
 	}
-	_, err = sender.SendMulticastNoRetry(&gcm.Message{Data: data}, ids)
+	_, err = sender.SendMulticastNoRetry(&gcm.Message{Notification: n}, ids)
 	return err
 }
